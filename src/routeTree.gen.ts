@@ -9,54 +9,318 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RegisterRouteImport } from './routes/register'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
+import { Route as AuthenticatedTemplatesIndexRouteImport } from './routes/_authenticated/templates/index'
+import { Route as AuthenticatedDocumentsIndexRouteImport } from './routes/_authenticated/documents/index'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as AuthenticatedTemplatesNewRouteImport } from './routes/_authenticated/templates/new'
+import { Route as AuthenticatedTemplatesTemplateIdRouteImport } from './routes/_authenticated/templates/$templateId'
+import { Route as AuthenticatedSettingsWorkspaceRouteImport } from './routes/_authenticated/settings/workspace'
+import { Route as AuthenticatedSettingsTeamRouteImport } from './routes/_authenticated/settings/team'
+import { Route as AuthenticatedSettingsBrandingRouteImport } from './routes/_authenticated/settings/branding'
+import { Route as AuthenticatedSettingsBillingRouteImport } from './routes/_authenticated/settings/billing'
+import { Route as AuthenticatedDocumentsNewRouteImport } from './routes/_authenticated/documents/new'
+import { Route as AuthenticatedDocumentsDocumentIdRouteImport } from './routes/_authenticated/documents/$documentId'
 
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRoute = AuthenticatedRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedDashboardRoute = AuthenticatedDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => AuthenticatedRoute,
+} as any)
+const AuthenticatedTemplatesIndexRoute =
+  AuthenticatedTemplatesIndexRouteImport.update({
+    id: '/templates/',
+    path: '/templates/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDocumentsIndexRoute =
+  AuthenticatedDocumentsIndexRouteImport.update({
+    id: '/documents/',
+    path: '/documents/',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedTemplatesNewRoute =
+  AuthenticatedTemplatesNewRouteImport.update({
+    id: '/templates/new',
+    path: '/templates/new',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedTemplatesTemplateIdRoute =
+  AuthenticatedTemplatesTemplateIdRouteImport.update({
+    id: '/templates/$templateId',
+    path: '/templates/$templateId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedSettingsWorkspaceRoute =
+  AuthenticatedSettingsWorkspaceRouteImport.update({
+    id: '/settings/workspace',
+    path: '/settings/workspace',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedSettingsTeamRoute =
+  AuthenticatedSettingsTeamRouteImport.update({
+    id: '/settings/team',
+    path: '/settings/team',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedSettingsBrandingRoute =
+  AuthenticatedSettingsBrandingRouteImport.update({
+    id: '/settings/branding',
+    path: '/settings/branding',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedSettingsBillingRoute =
+  AuthenticatedSettingsBillingRouteImport.update({
+    id: '/settings/billing',
+    path: '/settings/billing',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDocumentsNewRoute =
+  AuthenticatedDocumentsNewRouteImport.update({
+    id: '/documents/new',
+    path: '/documents/new',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
+const AuthenticatedDocumentsDocumentIdRoute =
+  AuthenticatedDocumentsDocumentIdRouteImport.update({
+    id: '/documents/$documentId',
+    path: '/documents/$documentId',
+    getParentRoute: () => AuthenticatedRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/register': typeof RegisterRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/documents/$documentId': typeof AuthenticatedDocumentsDocumentIdRoute
+  '/documents/new': typeof AuthenticatedDocumentsNewRoute
+  '/settings/billing': typeof AuthenticatedSettingsBillingRoute
+  '/settings/branding': typeof AuthenticatedSettingsBrandingRoute
+  '/settings/team': typeof AuthenticatedSettingsTeamRoute
+  '/settings/workspace': typeof AuthenticatedSettingsWorkspaceRoute
+  '/templates/$templateId': typeof AuthenticatedTemplatesTemplateIdRoute
+  '/templates/new': typeof AuthenticatedTemplatesNewRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/documents/': typeof AuthenticatedDocumentsIndexRoute
+  '/templates/': typeof AuthenticatedTemplatesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/register': typeof RegisterRoute
+  '/dashboard': typeof AuthenticatedDashboardRoute
+  '/profile': typeof AuthenticatedProfileRoute
+  '/documents/$documentId': typeof AuthenticatedDocumentsDocumentIdRoute
+  '/documents/new': typeof AuthenticatedDocumentsNewRoute
+  '/settings/billing': typeof AuthenticatedSettingsBillingRoute
+  '/settings/branding': typeof AuthenticatedSettingsBrandingRoute
+  '/settings/team': typeof AuthenticatedSettingsTeamRoute
+  '/settings/workspace': typeof AuthenticatedSettingsWorkspaceRoute
+  '/templates/$templateId': typeof AuthenticatedTemplatesTemplateIdRoute
+  '/templates/new': typeof AuthenticatedTemplatesNewRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/documents': typeof AuthenticatedDocumentsIndexRoute
+  '/templates': typeof AuthenticatedTemplatesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/login': typeof LoginRoute
+  '/onboarding': typeof OnboardingRoute
+  '/register': typeof RegisterRoute
+  '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
+  '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/documents/$documentId': typeof AuthenticatedDocumentsDocumentIdRoute
+  '/_authenticated/documents/new': typeof AuthenticatedDocumentsNewRoute
+  '/_authenticated/settings/billing': typeof AuthenticatedSettingsBillingRoute
+  '/_authenticated/settings/branding': typeof AuthenticatedSettingsBrandingRoute
+  '/_authenticated/settings/team': typeof AuthenticatedSettingsTeamRoute
+  '/_authenticated/settings/workspace': typeof AuthenticatedSettingsWorkspaceRoute
+  '/_authenticated/templates/$templateId': typeof AuthenticatedTemplatesTemplateIdRoute
+  '/_authenticated/templates/new': typeof AuthenticatedTemplatesNewRoute
   '/api/auth/$': typeof ApiAuthSplatRoute
+  '/_authenticated/documents/': typeof AuthenticatedDocumentsIndexRoute
+  '/_authenticated/templates/': typeof AuthenticatedTemplatesIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/api/auth/$'
+  fullPaths:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/register'
+    | '/dashboard'
+    | '/profile'
+    | '/documents/$documentId'
+    | '/documents/new'
+    | '/settings/billing'
+    | '/settings/branding'
+    | '/settings/team'
+    | '/settings/workspace'
+    | '/templates/$templateId'
+    | '/templates/new'
+    | '/api/auth/$'
+    | '/documents/'
+    | '/templates/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/api/auth/$'
-  id: '__root__' | '/' | '/api/auth/$'
+  to:
+    | '/'
+    | '/login'
+    | '/onboarding'
+    | '/register'
+    | '/dashboard'
+    | '/profile'
+    | '/documents/$documentId'
+    | '/documents/new'
+    | '/settings/billing'
+    | '/settings/branding'
+    | '/settings/team'
+    | '/settings/workspace'
+    | '/templates/$templateId'
+    | '/templates/new'
+    | '/api/auth/$'
+    | '/documents'
+    | '/templates'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/login'
+    | '/onboarding'
+    | '/register'
+    | '/_authenticated/dashboard'
+    | '/_authenticated/profile'
+    | '/_authenticated/documents/$documentId'
+    | '/_authenticated/documents/new'
+    | '/_authenticated/settings/billing'
+    | '/_authenticated/settings/branding'
+    | '/_authenticated/settings/team'
+    | '/_authenticated/settings/workspace'
+    | '/_authenticated/templates/$templateId'
+    | '/_authenticated/templates/new'
+    | '/api/auth/$'
+    | '/_authenticated/documents/'
+    | '/_authenticated/templates/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  LoginRoute: typeof LoginRoute
+  OnboardingRoute: typeof OnboardingRoute
+  RegisterRoute: typeof RegisterRoute
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/profile': {
+      id: '/_authenticated/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof AuthenticatedProfileRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/dashboard': {
+      id: '/_authenticated/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AuthenticatedDashboardRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/templates/': {
+      id: '/_authenticated/templates/'
+      path: '/templates'
+      fullPath: '/templates/'
+      preLoaderRoute: typeof AuthenticatedTemplatesIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/documents/': {
+      id: '/_authenticated/documents/'
+      path: '/documents'
+      fullPath: '/documents/'
+      preLoaderRoute: typeof AuthenticatedDocumentsIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
     }
     '/api/auth/$': {
       id: '/api/auth/$'
@@ -65,11 +329,105 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/templates/new': {
+      id: '/_authenticated/templates/new'
+      path: '/templates/new'
+      fullPath: '/templates/new'
+      preLoaderRoute: typeof AuthenticatedTemplatesNewRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/templates/$templateId': {
+      id: '/_authenticated/templates/$templateId'
+      path: '/templates/$templateId'
+      fullPath: '/templates/$templateId'
+      preLoaderRoute: typeof AuthenticatedTemplatesTemplateIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings/workspace': {
+      id: '/_authenticated/settings/workspace'
+      path: '/settings/workspace'
+      fullPath: '/settings/workspace'
+      preLoaderRoute: typeof AuthenticatedSettingsWorkspaceRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings/team': {
+      id: '/_authenticated/settings/team'
+      path: '/settings/team'
+      fullPath: '/settings/team'
+      preLoaderRoute: typeof AuthenticatedSettingsTeamRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings/branding': {
+      id: '/_authenticated/settings/branding'
+      path: '/settings/branding'
+      fullPath: '/settings/branding'
+      preLoaderRoute: typeof AuthenticatedSettingsBrandingRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/settings/billing': {
+      id: '/_authenticated/settings/billing'
+      path: '/settings/billing'
+      fullPath: '/settings/billing'
+      preLoaderRoute: typeof AuthenticatedSettingsBillingRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/documents/new': {
+      id: '/_authenticated/documents/new'
+      path: '/documents/new'
+      fullPath: '/documents/new'
+      preLoaderRoute: typeof AuthenticatedDocumentsNewRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/documents/$documentId': {
+      id: '/_authenticated/documents/$documentId'
+      path: '/documents/$documentId'
+      fullPath: '/documents/$documentId'
+      preLoaderRoute: typeof AuthenticatedDocumentsDocumentIdRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
 
+interface AuthenticatedRouteChildren {
+  AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
+  AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedDocumentsDocumentIdRoute: typeof AuthenticatedDocumentsDocumentIdRoute
+  AuthenticatedDocumentsNewRoute: typeof AuthenticatedDocumentsNewRoute
+  AuthenticatedSettingsBillingRoute: typeof AuthenticatedSettingsBillingRoute
+  AuthenticatedSettingsBrandingRoute: typeof AuthenticatedSettingsBrandingRoute
+  AuthenticatedSettingsTeamRoute: typeof AuthenticatedSettingsTeamRoute
+  AuthenticatedSettingsWorkspaceRoute: typeof AuthenticatedSettingsWorkspaceRoute
+  AuthenticatedTemplatesTemplateIdRoute: typeof AuthenticatedTemplatesTemplateIdRoute
+  AuthenticatedTemplatesNewRoute: typeof AuthenticatedTemplatesNewRoute
+  AuthenticatedDocumentsIndexRoute: typeof AuthenticatedDocumentsIndexRoute
+  AuthenticatedTemplatesIndexRoute: typeof AuthenticatedTemplatesIndexRoute
+}
+
+const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
+  AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
+  AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedDocumentsDocumentIdRoute: AuthenticatedDocumentsDocumentIdRoute,
+  AuthenticatedDocumentsNewRoute: AuthenticatedDocumentsNewRoute,
+  AuthenticatedSettingsBillingRoute: AuthenticatedSettingsBillingRoute,
+  AuthenticatedSettingsBrandingRoute: AuthenticatedSettingsBrandingRoute,
+  AuthenticatedSettingsTeamRoute: AuthenticatedSettingsTeamRoute,
+  AuthenticatedSettingsWorkspaceRoute: AuthenticatedSettingsWorkspaceRoute,
+  AuthenticatedTemplatesTemplateIdRoute: AuthenticatedTemplatesTemplateIdRoute,
+  AuthenticatedTemplatesNewRoute: AuthenticatedTemplatesNewRoute,
+  AuthenticatedDocumentsIndexRoute: AuthenticatedDocumentsIndexRoute,
+  AuthenticatedTemplatesIndexRoute: AuthenticatedTemplatesIndexRoute,
+}
+
+const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
+  AuthenticatedRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRoute: AuthenticatedRouteWithChildren,
+  LoginRoute: LoginRoute,
+  OnboardingRoute: OnboardingRoute,
+  RegisterRoute: RegisterRoute,
   ApiAuthSplatRoute: ApiAuthSplatRoute,
 }
 export const routeTree = rootRouteImport

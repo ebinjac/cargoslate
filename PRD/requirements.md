@@ -41,27 +41,8 @@
 ### Design Philosophy
 A strictly minimalistic interface where every element earns its place. The UI maximizes whitespace (or dark space) and maintains undivided focus on data and forms. No decorative chrome, no distracting gradients, no unnecessary motion — just the document, the data, and the task at hand.
 
-### Color Palette
-
-| Role | Value | Usage |
-|---|---|---|
-| Background | `#0A0A0A` | App shell, page backgrounds |
-| Surface | `#111111` | Cards, modals, sidebars |
-| Border | `#1F1F1F` | Dividers, input outlines |
-| Text Primary | `#FAFAFA` | Headings, labels |
-| Text Secondary | `#A1A1AA` | Descriptions, metadata |
-| Accent | `#FFFFFF` | CTAs, active states |
-| Destructive | `#EF4444` | Errors, delete actions |
-
-> Dark mode is the default and only supported mode in Phase 1. Light mode is a Phase 2 consideration.
-
-### Typography
-
-| Role | Font | Weight |
-|---|---|---|
-| UI & Body | `Inter` or `Geist` | 400, 500 |
-| Headings | `Inter` or `Geist` | 600, 700 |
-| Monospace / Data | `Geist Mono` | 400 |
+### Dark Mode
+Dark mode is the default and users can switch to light mode if they prefer.
 
 ### Iconography
 Lucide Icons — minimal, consistent line-weight icons that align with the shadcn/ui component library.
